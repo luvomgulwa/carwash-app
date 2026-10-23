@@ -1,4 +1,7 @@
 // Shows one carwash as a card: name, address, phone and its services.
+// The name and the "View details" link open the carwash's own page.
+
+import Link from "next/link";
 
 // The shape of one service, as it comes from the "services" table.
 export type Service = {
@@ -20,9 +23,11 @@ export type Carwash = {
 export default function CarwashCard({ carwash }: { carwash: Carwash }) {
   return (
     <article className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-      {/* Name */}
+      {/* Name, linking to the detail page */}
       <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-        {carwash.name}
+        <Link href={`/carwash/${carwash.id}`} className="hover:underline">
+          {carwash.name}
+        </Link>
       </h2>
 
       {/* Address */}
@@ -60,6 +65,14 @@ export default function CarwashCard({ carwash }: { carwash: Carwash }) {
           ))}
         </ul>
       )}
+
+      {/* Link to the detail page */}
+      <Link
+        href={`/carwash/${carwash.id}`}
+        className="mt-4 inline-block text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
+      >
+        View details & book →
+      </Link>
     </article>
   );
 }

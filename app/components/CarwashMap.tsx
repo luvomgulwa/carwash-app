@@ -39,7 +39,7 @@ export default function CarwashMap({ carwashes }: { carwashes: MapCarwash[] }) {
       bounds={positions}
       boundsOptions={{ padding: [40, 40], maxZoom: 15 }}
       scrollWheelZoom={false} // so scrolling the page doesn't zoom the map by accident
-      className="h-72 w-full rounded-2xl sm:h-96"
+      className="h-full w-full rounded-2xl" // fills the box that MapLoader gives it
     >
       {/* The map pictures (tiles) come from OpenStreetMap */}
       <TileLayer
